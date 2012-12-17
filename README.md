@@ -1,6 +1,6 @@
 # Introdução
 
-Nesse repositório coloquei uma possível solução para o desafio sugerido no e-book [Zend Framework 2 na prática](http://www.zfnapratica). 
+Nesse repositório coloquei uma possível solução para o desafio sugerido no e-book [Zend Framework 2 na prática](http://www.zfnapratica.com.br). 
 Caso você tenha outra solução basta clonar esse repositório e postar sua sugestão.
 
 #Passos
