@@ -1,0 +1,39 @@
+<div class="actions clearfix">
+  <div class="btns">
+    <a class="btn submit" href="/admin/index/save" title="Criar Post">Criar Post</a>
+  </div>
+</div>  
+<label class="divisor"><span>Lista de Posts</span></label>
+<table class="datatable">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Texto</th>
+      <th width="130" class="center">Data de Cadastro</th>
+      <th width="120" class="center">Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach($posts as $post):?>
+      <tr>
+        <td><a href="/application/index/post/id/<?php echo $post['id'];?>"><?php echo $this->escapeHtml($post['title']);?></a></td>
+        <td><?php echo $this->escapeHtml($post['description']);?></td>
+        <td class="center">
+          <?php 
+            echo $this->dateFormat($post['post_date'], \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT, 'pt_BR');
+          ?>
+        </td>
+        <td class="center">
+          <a href="/admin/index/save/id/<?php echo $post['id'] ;?>" title="Editar" class="btn"><span class="ui-icon ui-icon-pencil"></span></a>
+          <a href="/admin/index/delete/id/<?php echo $post['id'];?>" rel="confirmation" title="Deseja excluir este registro?" class="btn"><span class="ui-icon ui-icon-circle-close"></span></a>
+        </td>
+      </tr>
+    <?php endforeach;?>
+</table>
+<?php 
+  echo $this->paginationControl(
+    $posts,
+    'Sliding',
+    'partials/paginator/control.phtml'
+); 
+?>

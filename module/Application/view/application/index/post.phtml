@@ -1,0 +1,19 @@
+<h2><?php echo $post['title'];?></h2>
+
+<small>Publicado em <?php echo $this->dateFormat($post['post_date'], \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT, 'pt_BR');?></small>
+
+<p><?php echo nl2br($post['description']);?></p>
+
+<h4>Comentários</h4>
+
+<?php if(count($post['comments']) == 0): ?>
+  Não existem comentários
+<?php else: ?>
+    <?php foreach($post['comments'] as $c):?>
+      <p>
+        Autor: <?php echo $c['name'];?><br>
+        Data:  <?php echo $this->dateFormat($c['comment_date'], \IntlDateFormatter::SHORT, \IntlDateFormatter::SHORT, 'pt_BR');?><br>
+        Comentário: <?php echo $c['description'];?><br>
+      </p>
+    <?php endforeach;?>
+<?php endif;?>
